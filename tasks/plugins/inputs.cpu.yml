@@ -1,0 +1,9 @@
+---
+
+- name: "Configure CPU input plugin"
+  ansible.builtin.template:
+    src: ../../templates/plugins/inputs.cpu.conf.j2
+    dest: /etc/telegraf/telegraf.d/inputs.cpu.conf
+    owner: root
+    group: root
+    mode: 0644

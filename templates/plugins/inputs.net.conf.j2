@@ -1,0 +1,6 @@
+# Gather metrics about network interfaces
+[[inputs.net]]
+{% if net_interfaces %}
+  interfaces = {{ net_interfaces }}
+{% endif %}
+  ignore_protocol_stats = false

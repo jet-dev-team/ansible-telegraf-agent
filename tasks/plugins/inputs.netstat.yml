@@ -1,0 +1,9 @@
+---
+
+- name: "Configure Netstat input plugin"
+  ansible.builtin.template:
+    src: ../../templates/plugins/inputs.netstat.conf.j2
+    dest: /etc/telegraf/telegraf.d/inputs.netstat.conf
+    owner: root
+    group: root
+    mode: 0644

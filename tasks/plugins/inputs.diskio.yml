@@ -1,0 +1,9 @@
+---
+
+- name: "Configure Disk IO input plugin"
+  ansible.builtin.template:
+    src: ../../templates/plugins/inputs.diskio.conf.j2
+    dest: /etc/telegraf/telegraf.d/inputs.diskio.conf
+    owner: root
+    group: root
+    mode: 0644

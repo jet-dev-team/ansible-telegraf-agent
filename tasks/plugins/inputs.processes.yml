@@ -1,0 +1,9 @@
+---
+
+- name: "Configure Processes input plugin"
+  ansible.builtin.template:
+    src: ../../templates/plugins/inputs.processes.conf.j2
+    dest: /etc/telegraf/telegraf.d/inputs.processes.conf
+    owner: root
+    group: root
+    mode: 0644

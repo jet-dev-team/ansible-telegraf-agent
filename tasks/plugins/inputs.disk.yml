@@ -1,0 +1,9 @@
+---
+
+- name: "Configure Disk input plugin"
+  ansible.builtin.template:
+    src: ../../templates/plugins/inputs.disk.conf.j2
+    dest: /etc/telegraf/telegraf.d/inputs.disk.conf
+    owner: root
+    group: root
+    mode: 0644

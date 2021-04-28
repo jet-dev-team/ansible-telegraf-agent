@@ -1,0 +1,9 @@
+---
+
+- name: "Configure Mem input plugin"
+  ansible.builtin.template:
+    src: ../../templates/plugins/inputs.mem.conf.j2
+    dest: /etc/telegraf/telegraf.d/inputs.mem.conf
+    owner: root
+    group: root
+    mode: 0644
