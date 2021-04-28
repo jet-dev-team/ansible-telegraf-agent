@@ -23,4 +23,3 @@
     path: /etc/telegraf/README
     create: yes
     line: "Config files generated automatically. Any manual changes will be discarded after the next provisioning."
-
