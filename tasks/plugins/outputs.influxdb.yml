@@ -1,7 +1,6 @@
 ---
-
 - name: "Configure InfluxDB output plugin"
-  ansible.builtin.template:
+  template:
     src: ../../templates/plugins/outputs.influxdb.conf.j2
     dest: /etc/telegraf/telegraf.d/outputs.influxdb.conf
     owner: root

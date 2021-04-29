@@ -1,5 +1,4 @@
 ---
-
 - name: "Set up a Telegraf agent"
   hosts: all
 
@@ -8,15 +7,17 @@
 
   tasks:
     - name: "Gather packages facts"
-      ansible.builtin.package_facts:
+      package_facts:
         manager: auto
 
-    - ansible.builtin.include_tasks: tasks/install.yml
+    - name: "Include: tasks/install.yml"
+      include_tasks: tasks/install.yml
       when: "'telegraf' not in ansible_facts.packages"
-    
-    - ansible.builtin.include_tasks: tasks/configure.yml
+
+    - name: "Include: tasks/configure.yml"
+      include_tasks: tasks/configure.yml
 
     - name: "Restart Telegraf"
-      ansible.builtin.service:
+      service:
         name: telegraf
         state: restarted

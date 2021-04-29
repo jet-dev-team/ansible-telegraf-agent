@@ -1,6 +1,6 @@
 ---
 - name: "Create a custom config"
-  ansible.builtin.template:
+  template:
     src: ../templates/custom.conf.j2
     dest: /etc/telegraf/telegraf.d/custom.conf
     owner: root

@@ -1,7 +1,6 @@
 ---
-
 - name: "Configure Net input plugin"
-  ansible.builtin.template:
+  template:
     src: ../../templates/plugins/inputs.net.conf.j2
     dest: /etc/telegraf/telegraf.d/inputs.net.conf
     owner: root

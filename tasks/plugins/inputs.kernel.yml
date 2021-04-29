@@ -1,7 +1,6 @@
 ---
-
 - name: "Configure Kernel input plugin"
-  ansible.builtin.template:
+  template:
     src: ../../templates/plugins/inputs.kernel.conf.j2
     dest: /etc/telegraf/telegraf.d/inputs.kernel.conf
     owner: root

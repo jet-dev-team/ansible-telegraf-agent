@@ -1,7 +1,6 @@
 ---
-
 - name: "Configure Linux Sysctl FS input plugin"
-  ansible.builtin.template:
+  template:
     src: ../../templates/plugins/inputs.linux_sysctl_fs.conf.j2
     dest: /etc/telegraf/telegraf.d/inputs.linux_sysctl_fs.conf
     owner: root

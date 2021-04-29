@@ -1,7 +1,6 @@
 ---
-
 - name: "Configure Interrupts input plugin"
-  ansible.builtin.template:
+  template:
     src: ../../templates/plugins/inputs.interrupts.conf.j2
     dest: /etc/telegraf/telegraf.d/inputs.interrupts.conf
     owner: root

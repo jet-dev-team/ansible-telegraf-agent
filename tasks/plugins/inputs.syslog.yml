@@ -1,19 +1,18 @@
 ---
-
 - name: "Dependency warning"
-  ansible.builtin.debug:
+  debug:
     msg: "RSyslog is not installed and 'syslog_autoinstall' variable is set to False."
   when: "'rsyslog' not in ansible_facts.packages and not syslog_autoinstall"
 
 - name: "Install RSyslog"
-  ansible.builtin.apt:
+  apt:
     name: rsyslog
     state: present
     update_cache: yes
   when: "'rsyslog' not in ansible_facts.packages and syslog_autoinstall"
 
 - name: "Configure Syslog input plugin"
-  ansible.builtin.template:
+  template:
     src: ../../templates/plugins/inputs.syslog.conf.j2
     dest: /etc/telegraf/telegraf.d/inputs.syslog.conf
     owner: root
@@ -22,7 +21,7 @@
   when: "'rsyslog' in ansible_facts.packages"
 
 - name: "Create rsyslog config"
-  ansible.builtin.template:
+  template:
     src: ../../templates/rsyslog.conf.j2
     dest: /etc/rsyslog.d/90-telegraf.conf
     owner: root
@@ -31,6 +30,6 @@
   when: "'rsyslog' in ansible_facts.packages"
 
 - name: "Restart RSyslog"
-  ansible.builtin.service:
+  service:
     name: rsyslog
     state: restarted

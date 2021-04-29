@@ -1,12 +1,11 @@
 ---
-
 - name: "Remove default config file"
-  ansible.builtin.file:
+  file:
     path: /etc/telegraf/telegraf.conf
     state: absent
 
 - name: "Create empty default config file"
-  ansible.builtin.file:
+  file:
     path: /etc/telegraf/telegraf.conf
     state: touch
     owner: root
@@ -14,12 +13,12 @@
     mode: 0644
 
 - name: "Remove old config dir"
-  ansible.builtin.file:
+  file:
     path: /etc/telegraf/telegraf.d/
     state: absent
 
 - name: "Create new config dir"
-  ansible.builtin.file:
+  file:
     path: /etc/telegraf/telegraf.d/
     state: directory
     mode: 0755

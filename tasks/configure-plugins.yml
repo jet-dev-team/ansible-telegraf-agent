@@ -1,9 +1,8 @@
 ---
-
 - name: "Configure output plugins"
-  ansible.builtin.include_tasks: "plugins/outputs.{{ item }}.yml"
+  include_tasks: "plugins/outputs.{{ item }}.yml"
   with_items: "{{ output_plugins }}"
 
 - name: "Configure input plugins"
-  ansible.builtin.include_tasks: "plugins/inputs.{{ item }}.yml"
+  include_tasks: "plugins/inputs.{{ item }}.yml"
   with_items: "{{ input_plugins }}"
