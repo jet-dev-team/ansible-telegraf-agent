@@ -1,15 +1,9 @@
 ---
-- name: "Dependency warning"
-  debug:
-    msg: "RSyslog is not installed and 'syslog_autoinstall' variable is set to False."
-  when: "'rsyslog' not in ansible_facts.packages and not syslog_autoinstall"
-
 - name: "Install RSyslog"
   apt:
     name: rsyslog
     state: present
     update_cache: yes
-  when: "'rsyslog' not in ansible_facts.packages and syslog_autoinstall"
 
 - name: "Configure Syslog input plugin"
   template:
@@ -18,7 +12,6 @@
     owner: root
     group: root
     mode: 0644
-  when: "'rsyslog' in ansible_facts.packages"
 
 - name: "Create rsyslog config"
   template:
@@ -27,7 +20,6 @@
     owner: root
     group: root
     mode: 0644
-  when: "'rsyslog' in ansible_facts.packages"
 
 - name: "Restart RSyslog"
   service:
