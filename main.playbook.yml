@@ -6,13 +6,8 @@
     - default.config.yml
 
   tasks:
-    - name: "Gather packages facts"
-      package_facts:
-        manager: auto
-
     - name: "Include: tasks/install.yml"
       include_tasks: tasks/install.yml
-      when: "'telegraf' not in ansible_facts.packages"
 
     - name: "Include: tasks/configure.yml"
       include_tasks: tasks/configure.yml
