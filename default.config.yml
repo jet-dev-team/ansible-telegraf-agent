@@ -196,7 +196,8 @@ syslog_use_tcp: "false"
 #   ex: server = "tcp://localhost:6514"
 #       server = "udp://:6514"
 #       server = "unix:///var/run/telegraf-syslog.sock"
-syslog_server: "tcp://:6514"
+syslog_protocol: "{{ (syslog_use_tcp == 'true') | ternary('tcp', 'udp') }}"
+syslog_server: "{{ syslog_protocol }}://:6514"
 # TLS Config.
 syslog_tls_allowed_cacerts: []
 syslog_tls_cert: ""
