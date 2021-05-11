@@ -189,7 +189,7 @@ interrupts_irq_tagpass: []
 ##
 
 syslog_autoinstall: "false"
-syslog_use_udp: "false"
+syslog_use_tcp: "false"
 # Protocol, address and port to host the syslog receiver.
 # If no host is specified, then localhost is used.
 # If no port is specified, 6514 is used (RFC5425#section-4.1).

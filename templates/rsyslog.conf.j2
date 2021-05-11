@@ -3,10 +3,11 @@ $ActionQueueFileName srvrfwd
 $ActionResumeRetryCount -1
 $ActionQueueSaveOnShutdown on
 
-{% if syslog_use_udp | bool %}
+{% if syslog_use_tcp | bool %}
 action(
   type="omfwd"
-  Protocol="udp"
+  Protocol="tcp"
+  TCP_Framing="octet-counted"
   Target="127.0.0.1"
   Port="6514"
   Template="RSYSLOG_SyslogProtocol23Format"
@@ -14,8 +15,7 @@ action(
 {% else %}
 action(
   type="omfwd"
-  Protocol="tcp"
-  TCP_Framing="octet-counted"
+  Protocol="udp"
   Target="127.0.0.1"
   Port="6514"
   Template="RSYSLOG_SyslogProtocol23Format"
