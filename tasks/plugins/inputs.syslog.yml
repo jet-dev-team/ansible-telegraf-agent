@@ -1,0 +1,27 @@
+---
+- name: "Install RSyslog"
+  apt:
+    name: rsyslog
+    state: present
+    update_cache: yes
+
+- name: "Configure Syslog input plugin"
+  template:
+    src: ../../templates/plugins/inputs.syslog.conf.j2
+    dest: /etc/telegraf/telegraf.d/inputs.syslog.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: "Create rsyslog config"
+  template:
+    src: ../../templates/rsyslog.conf.j2
+    dest: /etc/rsyslog.d/90-telegraf.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: "Restart RSyslog"
+  service:
+    name: rsyslog
+    state: restarted

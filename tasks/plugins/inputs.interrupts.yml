@@ -1,0 +1,8 @@
+---
+- name: "Configure Interrupts input plugin"
+  template:
+    src: ../../templates/plugins/inputs.interrupts.conf.j2
+    dest: /etc/telegraf/telegraf.d/inputs.interrupts.conf
+    owner: root
+    group: root
+    mode: 0644

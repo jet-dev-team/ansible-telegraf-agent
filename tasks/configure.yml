@@ -1,0 +1,24 @@
+---
+- name: Include optional configuration files.
+  include_vars: "{{ item }}"
+  with_fileglob:
+    - "../config.yml"
+
+- name: "Include: prepare-file-structure.yml"
+  include_tasks: prepare-file-structure.yml
+
+- name: "Include: configure-agent.yml"
+  include_tasks: configure-agent.yml
+
+- name: "Include: configure-plugins.yml"
+  include_tasks: configure-plugins.yml
+
+- name: "Include: custom-config.yml"
+  include_tasks: custom-config.yml
+  when: telegraf_extra_config is defined
+
+- name: "Create README file"
+  lineinfile:
+    path: /etc/telegraf/README
+    create: yes
+    line: "Config files generated automatically. Any manual changes will be discarded after the next provisioning."

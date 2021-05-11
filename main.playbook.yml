@@ -1,0 +1,18 @@
+---
+- name: "Set up a Telegraf agent"
+  hosts: all
+
+  vars_files:
+    - default.config.yml
+
+  tasks:
+    - name: "Include: tasks/install.yml"
+      include_tasks: tasks/install.yml
+
+    - name: "Include: tasks/configure.yml"
+      include_tasks: tasks/configure.yml
+
+    - name: "Restart Telegraf"
+      service:
+        name: telegraf
+        state: restarted

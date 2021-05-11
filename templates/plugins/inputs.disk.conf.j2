@@ -1,0 +1,9 @@
+[[inputs.disk]]
+{% if disk_mount_points %}
+  ## By default stats will be gathered for all mount points.
+  ## Set mount_points will restrict the stats to only the specified mount points.
+  mount_points = {{ disk_mount_points | to_json }}
+
+{% endif %}
+  ## Ignore mount points by filesystem type.
+  ignore_fs = {{ disk_ignore_fs | to_json }}

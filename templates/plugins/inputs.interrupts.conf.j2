@@ -1,0 +1,10 @@
+[[inputs.interrupts]]
+  cpu_as_tag = {{ interrupts_cpu_as_tag }}
+{% if interrupts_irq_tagdrop %}
+  [inputs.interrupts.tagdrop]
+      irq = {{ interrupts_irq_tagdrop }}
+{% endif %}
+{% if interrupts_irq_tagpass %}
+  [inputs.interrupts.tagpass]
+      irq = {{ interrupts_irq_tagpass }}
+{% endif %}

@@ -1,0 +1,18 @@
+[[inputs.syslog]]
+  server = "{{ syslog_server }}"
+{% if syslog_tls_allowed_cacerts %}
+  tls_allowed_cacerts = {{ syslog_tls_allowed_cacerts }}
+{% endif %}
+{% if syslog_tls_cert %}
+  tls_cert = "{{ syslog_tls_cert }}"
+{% endif %}
+{% if syslog_tls_key %}
+  tls_key = "{{ syslog_tls_key }}"
+{% endif %}
+  keep_alive_period = "{{ syslog_keep_alive_period }}"
+  max_connections = {{ syslog_max_connections }}
+  read_timeout = "{{ syslog_read_timeout }}"
+  framing = "{{ syslog_framing }}"
+  trailer = "{{ syslog_trailer }}"
+  best_effort = {{ syslog_best_effort }}
+  sdparam_separator = "{{ syslog_sdparam_separator }}"

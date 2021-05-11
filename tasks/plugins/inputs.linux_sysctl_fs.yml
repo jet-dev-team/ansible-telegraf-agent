@@ -1,0 +1,8 @@
+---
+- name: "Configure Linux Sysctl FS input plugin"
+  template:
+    src: ../../templates/plugins/inputs.linux_sysctl_fs.conf.j2
+    dest: /etc/telegraf/telegraf.d/inputs.linux_sysctl_fs.conf
+    owner: root
+    group: root
+    mode: 0644

@@ -1,0 +1,8 @@
+---
+- name: "Create a custom config"
+  template:
+    src: ../templates/custom.conf.j2
+    dest: /etc/telegraf/telegraf.d/custom.conf
+    owner: root
+    group: root
+    mode: 0644

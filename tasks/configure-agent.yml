@@ -1,0 +1,8 @@
+---
+- name: "Configure the agent"
+  template:
+    src: ../templates/agent.conf.j2
+    dest: /etc/telegraf/telegraf.d/agent.conf
+    owner: root
+    group: root
+    mode: 0644

@@ -1,0 +1,12 @@
+[[inputs.cpu]]
+  ## Whether to report per-cpu stats or not
+  percpu = {{ cpu_percpu }}
+
+  ## Whether to report total system cpu stats or not
+  totalcpu = {{ cpu_totalcpu }}
+
+  ## If true, collect raw CPU time metrics.
+  collect_cpu_time = {{ cpu_collect_cpu_time }}
+
+  ## If true, compute and report the sum of all non-idle CPU states.
+  report_active = {{ cpu_report_active }}
