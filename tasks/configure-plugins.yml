@@ -1,8 +1,12 @@
 ---
-- name: "Configure output plugins"
-  include_tasks: "plugins/outputs.{{ item }}.yml"
-  with_items: "{{ output_plugins }}"
-
 - name: "Configure input plugins"
   include_tasks: "plugins/inputs.{{ item }}.yml"
   with_items: "{{ input_plugins }}"
+
+- name: "Configure processor plugins"
+  include_tasks: "plugins/processors.{{ item }}.yml"
+  with_items: "{{ processor_plugins }}"
+
+- name: "Configure output plugins"
+  include_tasks: "plugins/outputs.{{ item }}.yml"
+  with_items: "{{ output_plugins }}"
