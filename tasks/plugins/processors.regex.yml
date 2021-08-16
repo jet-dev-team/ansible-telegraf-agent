@@ -1,0 +1,8 @@
+---
+- name: "Configure Regex processor plugin"
+  template:
+    src: ../../templates/plugins/processors.regex.conf.j2
+    dest: /etc/telegraf/telegraf.d/processors.regex.conf
+    owner: root
+    group: root
+    mode: 0644

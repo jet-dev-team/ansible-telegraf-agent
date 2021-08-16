@@ -90,6 +90,8 @@ input_plugins:
   - netstat
   - interrupts
 
+processor_plugins: []
+
 output_plugins:
   - influxdb
 

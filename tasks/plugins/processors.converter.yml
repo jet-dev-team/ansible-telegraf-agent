@@ -1,0 +1,8 @@
+---
+- name: "Configure Converter processor plugin"
+  template:
+    src: ../../templates/plugins/processors.converter.conf.j2
+    dest: /etc/telegraf/telegraf.d/processors.converter.conf
+    owner: root
+    group: root
+    mode: 0644
