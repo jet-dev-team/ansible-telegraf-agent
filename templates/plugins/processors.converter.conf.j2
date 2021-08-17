@@ -1,12 +1,24 @@
-# Convert values to another metric value type
 [[processors.converter]]
-  namepass = ["syslog"]
-  order = 2
+{% if converter_namepass is defined and converter_namepass|length > 0 %}
+  namepass = {{ converter_namepass | to_json }}
+{% endif %}
+{% if converter_order is defined %}
+  order = {{ converter_order }}
+{% endif %}
 
-  ## Fields to convert
-  ##
-  ## The table key determines the target type, and the array of key-values
-  ## select the keys to convert.  The array may contain globs.
-  ##   <target-type> = [<field-key>...]
+  [processors.converter.tags]
+    measurement = {{ converter_tag_to_measurement | to_json }}
+    string = {{ converter_tag_to_string | to_json }}
+    integer = {{ converter_tag_to_integer | to_json }}
+    unsigned = {{ converter_tag_to_unsigned | to_json }}
+    boolean = {{ converter_tag_to_boolean | to_json }}
+    float = {{ converter_tag_to_float | to_json }}
+
   [processors.converter.fields]
-    tag = ["type", "base_url"]
+    measurement = {{ converter_field_to_measurement | to_json }}
+    tag = {{ converter_field_to_tag | to_json}}
+    string = {{ converter_field_to_string | to_json}}
+    integer = {{ converter_field_to_integer | to_json}}
+    unsigned = {{ converter_field_to_unsigned | to_json}}
+    boolean = {{ converter_field_to_boolean | to_json}}
+    float = {{ converter_field_to_float | to_json}}

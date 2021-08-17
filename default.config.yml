@@ -232,3 +232,36 @@ syslog_best_effort: "false"
 # For each combination a field is created.
 # Its name is created concatenating identifier, sdparam_separator, and parameter name.
 syslog_sdparam_separator: "_"
+
+##
+# Regex processor plugin configuration.
+#
+# https://github.com/influxdata/telegraf/tree/master/plugins/processors/regex
+##
+
+# regex_namepass: []
+# regex_order: 1
+regex_fields: []
+regex_tags: []
+
+##
+# Regex processor plugin configuration.
+#
+# https://github.com/influxdata/telegraf/tree/master/plugins/processors/converter
+##
+
+# converter_namepass: []
+# converter_order: 1
+converter_tag_to_measurement: []
+converter_tag_to_string: []
+converter_tag_to_integer: []
+converter_tag_to_unsigned: []
+converter_tag_to_boolean: []
+converter_tag_to_float: []
+converter_field_to_tag: []
+converter_field_to_measurement: []
+converter_field_to_string: []
+converter_field_to_integer: []
+converter_field_to_unsigned: []
+converter_field_to_boolean: []
+converter_field_to_float: []
