@@ -1,0 +1,21 @@
+# Reads metrics from a SSL certificate
+[[inputs.x509_cert]]
+  sources = {{ x509_cert_sources | to_json }}
+{% if x509_cert_timeout is defined and x509_cert_timeout|length > 0 %}
+  timeout = {{ timeout }}
+{% endif %}
+{% if x509_cert_server_name is defined and x509_cert_server_name|length > 0 %}
+  server_name = {{ x509_cert_server_name }}
+{% endif %}
+{% if x509_cert_tls_ca is defined and x509_cert_tls_ca|length > 0 %}
+  tls_ca = {{ x509_cert_tls_ca }}
+{% endif %}
+{% if x509_cert_tls_cert is defined and x509_cert_tls_cert|length > 0 %}
+  tls_cert = {{ x509_cert_tls_cert }}
+{% endif %}
+{% if x509_cert_tls_key is defined and x509_cert_tls_key|length > 0 %}
+  tls_key = {{ x509_cert_tls_key }}
+{% endif %}
+{% if x509_cert_tls_server_name is defined and x509_cert_tls_server_name|length > 0 %}
+  tls_server_name = {{ x509_cert_tls_server_name }}
+{% endif %}

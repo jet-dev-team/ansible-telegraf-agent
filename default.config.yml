@@ -265,3 +265,16 @@ converter_field_to_integer: []
 converter_field_to_unsigned: []
 converter_field_to_boolean: []
 converter_field_to_float: []
+
+##
+# x505 Certificate processor plugin configuration.
+#
+# https://github.com/influxdata/telegraf/tree/master/plugins/inputs/x509_cert
+##
+x509_cert_sources: []
+# x509_cert_timeout: "5s"
+# x509_cert_server_name: "myhost.example.org"
+# x509_cert_tls_ca: "/etc/telegraf/ca.pem"
+# x509_cert_tls_cert: "/etc/telegraf/cert.pem"
+# x509_cert_tls_key: "/etc/telegraf/key.pem"
+# x509_cert_tls_server_name: "myhost.example.org"

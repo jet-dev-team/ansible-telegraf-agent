@@ -1,0 +1,8 @@
+---
+- name: "Configure x509 Certificate input plugin"
+  template:
+    src: ../../templates/plugins/inputs.x509_cert.conf.j2
+    dest: /etc/telegraf/telegraf.d/inputs.x509_cert.conf
+    owner: root
+    group: root
+    mode: 0644
