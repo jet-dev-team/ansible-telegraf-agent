@@ -1,0 +1,17 @@
+# See https://github.com/influxdata/telegraf/tree/master/plugins/inputs/mysql
+[[inputs.mysql]]
+  servers = ["tcp(127.0.0.1:3306)/"]
+  metric_version = 2
+
+  ## gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_TABLE
+  gather_table_io_waits = true
+
+  ## gather metrics from PERFORMANCE_SCHEMA.TABLE_LOCK_WAITS
+  gather_table_lock_waits = true
+
+  ## gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_INDEX_USAGE
+  gather_index_io_waits = true
+
+  ## gather metrics from PERFORMANCE_SCHEMA.EVENT_WAITS
+  gather_event_waits = true
+

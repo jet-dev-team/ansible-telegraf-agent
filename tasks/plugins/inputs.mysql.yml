@@ -1,0 +1,8 @@
+---
+- name: "Configure MySQL input plugin"
+  template:
+    src: ../../templates/plugins/inputs.mysql.conf.j2
+    dest: /etc/telegraf/telegraf.d/inputs.mysql.conf
+    owner: root
+    group: root
+    mode: 0644
