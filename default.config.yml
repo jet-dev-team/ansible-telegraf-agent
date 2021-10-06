@@ -234,6 +234,86 @@ syslog_best_effort: "false"
 syslog_sdparam_separator: "_"
 
 ##
+# MySQL input plugin configuration.
+#
+# https://github.com/influxdata/telegraf/tree/master/plugins/inputs/mysql
+##
+
+# Specify servers via a url matching:
+#  [username[:password]@][protocol[(address)]]/[?tls=[true|false|skip-verify|custom]]
+#  see https://github.com/go-sql-driver/mysql#dsn-data-source-name
+#  e.g.
+#    servers = ["user:passwd@tcp(127.0.0.1:3306)/?tls=false"]
+#    servers = ["user@tcp(127.0.0.1:3306)/?tls=false"]
+#
+# If no servers are specified, then localhost is used as the host.
+mysql_servers: ["tcp(127.0.0.1:3306)/"]
+# Selects the metric output format.
+#
+# This option exists to maintain backwards compatibility, if you have
+# existing metrics do not set or change this value until you are ready to
+# migrate to the new format.
+#
+# If you do not have existing metrics from this plugin set to the latest
+# version.
+#
+# Telegraf >=1.6: metric_version = 2
+#           <1.6: metric_version = 1 (or unset)
+mysql_metric_version: 2
+# if the list is empty, then metrics are gathered from all database tables
+mysql_table_schema_databases: []
+# gather metrics from INFORMATION_SCHEMA.TABLES for databases provided above list
+mysql_gather_table_schema: "false"
+# gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST
+mysql_gather_process_list: "false"
+# gather user statistics from INFORMATION_SCHEMA.USER_STATISTICS
+mysql_gather_user_statistics: "false"
+# gather auto_increment columns and max values from information schema
+mysql_gather_info_schema_auto_inc: "false"
+# gather metrics from INFORMATION_SCHEMA.INNODB_METRICS
+mysql_gather_innodb_metrics: "false"
+# gather metrics from all channels from SHOW SLAVE STATUS command output
+mysql_gather_all_slave_channels: "false"
+# gather metrics from SHOW SLAVE STATUS command output
+mysql_gather_slave_status: "false"
+# use SHOW ALL SLAVES STATUS command output for MariaDB
+mysql_mariadb_dialect: "false"
+# gather metrics from SHOW BINARY LOGS command output
+mysql_gather_binary_logs: "false"
+# gather metrics from SHOW GLOBAL VARIABLES command output
+mysql_gather_global_variables: "true"
+# gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_TABLE
+mysql_gather_table_io_waits: "false"
+# gather metrics from PERFORMANCE_SCHEMA.TABLE_LOCK_WAITS
+mysql_gather_table_lock_waits: "false"
+# gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_INDEX_USAGE
+mysql_gather_index_io_waits: "false"
+# gather metrics from PERFORMANCE_SCHEMA.EVENT_WAITS
+mysql_gather_event_waits: "false"
+# gather metrics from PERFORMANCE_SCHEMA.FILE_SUMMARY_BY_EVENT_NAME
+mysql_gather_file_events_stats: "false"
+# gather metrics from PERFORMANCE_SCHEMA.EVENTS_STATEMENTS_SUMMARY_BY_DIGEST
+mysql_gather_perf_events_statements: "false"
+# gather metrics from PERFORMANCE_SCHEMA.EVENTS_STATEMENTS_SUMMARY_BY_ACCOUNT_BY_EVENT_NAME
+mysql_gather_perf_sum_per_acc_per_event: "false"
+# list of events to be gathered for gather_perf_sum_per_acc_per_event
+# in case of empty list all events will be gathered
+mysql_perf_summary_events: []
+# the limits for metrics form perf_events_statements
+mysql_perf_events_statements_digest_text_limit: 120
+mysql_perf_events_statements_limit: 250
+mysql_perf_events_statements_time_limit: 86400
+# Some queries we may want to run less often (such as SHOW GLOBAL VARIABLES)
+#   example: interval_slow = "30m"
+mysql_interval_slow: ""
+# Optional TLS Config (will be used if tls=custom parameter specified in server uri)
+mysql_tls_ca: ""
+mysql_tls_cert: ""
+mysql_tls_key: ""
+# Use TLS but skip chain & host verification
+mysql_insecure_skip_verify: "false"
+
+##
 # Regex processor plugin configuration.
 #
 # https://github.com/influxdata/telegraf/tree/master/plugins/processors/regex
@@ -278,5 +358,3 @@ x509_cert_sources: []
 # x509_cert_tls_cert: "/etc/telegraf/cert.pem"
 # x509_cert_tls_key: "/etc/telegraf/key.pem"
 # x509_cert_tls_server_name: "myhost.example.org"
-
-mysql_server: "tcp(127.0.0.1:3306)/"

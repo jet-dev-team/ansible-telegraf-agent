@@ -1,5 +1,38 @@
-# See https://github.com/influxdata/telegraf/tree/master/plugins/inputs/mysql
 [[inputs.mysql]]
-  servers = ["{{ mysql_server }}"]
-
-
+  servers = {{ mysql_servers | to_json }}
+  metric_version = {{ mysql_metric_version }}
+  table_schema_databases = {{ mysql_table_schema_databases | to_json }}
+  gather_table_schema = {{ mysql_gather_table_schema }}
+  gather_process_list = {{ mysql_gather_process_list }}
+  gather_user_statistics = {{ mysql_gather_user_statistics }}
+  gather_info_schema_auto_inc = {{ mysql_gather_info_schema_auto_inc }}
+  gather_innodb_metrics = {{ mysql_gather_innodb_metrics }}
+  gather_all_slave_channels = {{ mysql_gather_all_slave_channels }}
+  gather_slave_status = {{ mysql_gather_slave_status }}
+  mariadb_dialect = {{ mysql_mariadb_dialect }}
+  gather_binary_logs = {{ mysql_gather_binary_logs }}
+  gather_global_variables = {{ mysql_gather_global_variables }}
+  gather_table_io_waits = {{ mysql_gather_table_io_waits }}
+  gather_table_lock_waits = {{ mysql_gather_table_lock_waits }}
+  gather_index_io_waits = {{ mysql_gather_index_io_waits }}
+  gather_event_waits = {{ mysql_gather_event_waits }}
+  gather_file_events_stats = {{ mysql_gather_file_events_stats }}
+  gather_perf_events_statements = {{ mysql_gather_perf_events_statements }}
+  gather_perf_sum_per_acc_per_event = {{ mysql_gather_perf_sum_per_acc_per_event }}
+  perf_summary_events = {{ mysql_perf_summary_events | to_json }}
+  perf_events_statements_digest_text_limit = {{ mysql_perf_events_statements_digest_text_limit }}
+  perf_events_statements_limit = {{ mysql_perf_events_statements_limit }}
+  perf_events_statements_time_limit = {{ mysql_perf_events_statements_time_limit }}
+{% if mysql_interval_slow is defined and mysql_interval_slow|length > 0 %}
+  interval_slow = "{{ mysql_interval_slow }}"
+{% endif %}
+{% if mysql_tls_ca is defined and mysql_tls_ca|length > 0 %}
+  tls_ca = "{{ mysql_tls_ca }}"
+{% endif %}
+{% if mysql_tls_cert is defined and mysql_tls_cert|length > 0 %}
+  tls_cert = "{{ mysql_tls_cert }}"
+{% endif %}
+{% if mysql_tls_key is defined and mysql_tls_key|length > 0 %}
+  tls_key = "{{ mysql_tls_key }}"
+{% endif %}
+  insecure_skip_verify = {{ mysql_insecure_skip_verify }}
