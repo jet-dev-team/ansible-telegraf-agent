@@ -278,3 +278,5 @@ x509_cert_sources: []
 # x509_cert_tls_cert: "/etc/telegraf/cert.pem"
 # x509_cert_tls_key: "/etc/telegraf/key.pem"
 # x509_cert_tls_server_name: "myhost.example.org"
+
+mysql_server: "tcp(127.0.0.1:3306)/"
