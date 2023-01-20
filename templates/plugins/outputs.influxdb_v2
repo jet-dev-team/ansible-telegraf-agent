@@ -1,0 +1,7 @@
+# Configuration for sending metrics to InfluxDB 2.0
+# See https://github.com/influxdata/telegraf/tree/master/plugins/outputs/influxdb_v2
+[[outputs.influxdb_v2]]
+  urls = {{ influxdb_v2_urls | to_json }}
+  token = "{{ influxdb_v2_token }}"
+  organization = "{{ influxdb_v2_organization }}"
+  bucket = "{{ influxdb_v2_bucket }}"
