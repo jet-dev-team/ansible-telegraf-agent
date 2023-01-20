@@ -93,8 +93,8 @@ input_plugins:
 processor_plugins: []
 
 output_plugins:
-  # - influxdb
-  - influxdb_v2
+  - influxdb
+  # - influxdb_v2
 
 # Configuration for InfluxDB v1
 influxdb_urls: []
