@@ -1,0 +1,9 @@
+---
+
+- name: "Configure InfluxDB v2 output plugin"
+  template:
+    src: ../../templates/plugins/outputs.influxdb_v2.conf.j2
+    dest: /etc/telegraf/telegraf.d/outputs.influxdb_v2.conf
+    owner: root
+    group: root
+    mode: 0644

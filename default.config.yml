@@ -93,12 +93,20 @@ input_plugins:
 processor_plugins: []
 
 output_plugins:
-  - influxdb
+  # - influxdb
+  - influxdb_v2
 
+# Configuration for InfluxDB v1
 influxdb_urls: []
 influxdb_database: "telegraf"
 influxdb_username: ""
 influxdb_password: ""
+
+# Configuration for InfluxD v2
+influxdb_v2_urls: []
+influxdb_v2_token: ""
+influxdb_v2_organization: ""
+influxdb_v2_bucket: ""
 
 ##
 # CPU input plugin configuration.
