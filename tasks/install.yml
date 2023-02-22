@@ -5,12 +5,10 @@
       get_url:
         url: https://repos.influxdata.com/influxdata-archive_compat.key
         dest: /tmp/influxdata-archive_compat.key
-      register: apt_key
 
     - name: "Create apt key"
       shell: cat /tmp/influxdata-archive_compat.key | gpg --dearmor
       register: gpg_output
-      when: apt_key is changed
 
     - name: "Install apt key"
       copy:
