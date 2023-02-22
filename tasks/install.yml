@@ -9,6 +9,7 @@
     - name: "Create apt key"
       shell: cat /tmp/influxdata-archive_compat.key | gpg --dearmor
       register: gpg_output
+      when: content_from_url.changed
 
     - name: "Install apt key"
       copy:
