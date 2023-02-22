@@ -2,14 +2,15 @@
 - name: "Add apt key"
   block:
     - name: "Download apt key"
-      ansible.builtin.get_url:
+      get_url:
         url: https://repos.influxdata.com/influxdata-archive_compat.key
         dest: /tmp/influxdata-archive_compat.key
+      register: apt_key
 
     - name: "Create apt key"
       shell: cat /tmp/influxdata-archive_compat.key | gpg --dearmor
       register: gpg_output
-      when: content_from_url.changed
+      when: apt_key.changed
 
     - name: "Install apt key"
       copy:
