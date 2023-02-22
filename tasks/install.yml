@@ -6,9 +6,18 @@
         url: https://repos.influxdata.com/influxdata-archive_compat.key
         dest: /tmp/influxdata-archive_compat.key
 
+    - name: "Create apt key"
+      shell: cat /tmp/influxdata-archive_compat.key | gpg --dearmor
+      register: gpg_output
+
     - name: "Install apt key"
+      copy:
+        content: "{{ gpg_output.stdout }}"
+        dest: /etc/apt/trusted.gpg.d/influxdata-archive_compat.gpg
+
+    - name: "Update apt key"
       ansible.builtin.apt_repository:
-        repo: "deb [signed-by=/tmp/influxdata-archive_compat.key] https://repos.influxdata.com/debian stable main"
+        repo: "deb [signed-by=/etc/apt/trusted.gpg.d/influxdata-archive_compat.gpg] https://repos.influxdata.com/debian stable main"
         state: present
 
 - name: "Install Telegraf"
