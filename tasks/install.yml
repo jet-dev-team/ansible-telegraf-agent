@@ -1,14 +1,24 @@
 ---
 - name: "Add apt key"
-  apt_key:
-    url: https://repos.influxdata.com/influxdb.key
-    state: present
+  block:
+    - name: "Download apt key"
+      get_url:
+        url: https://repos.influxdata.com/influxdata-archive_compat.key
+        dest: /tmp/influxdata-archive_compat.key
 
-- name: "Add apt repo"
-  apt_repository:
-    repo: "deb https://repos.influxdata.com/{{ ansible_facts['distribution']|lower }} {{ ansible_facts['distribution_release'] }} stable"
-    state: present
-    filename: influxdb
+    - name: "Create apt key"
+      shell: cat /tmp/influxdata-archive_compat.key | gpg --dearmor
+      register: gpg_output
+
+    - name: "Install apt key"
+      copy:
+        content: "{{ gpg_output.stdout }}"
+        dest: /etc/apt/trusted.gpg.d/influxdata-archive_compat.gpg
+
+    - name: "Update apt key"
+      ansible.builtin.apt_repository:
+        repo: "deb [signed-by=/etc/apt/trusted.gpg.d/influxdata-archive_compat.gpg] https://repos.influxdata.com/debian stable main"
+        state: present
 
 - name: "Install Telegraf"
   apt:
