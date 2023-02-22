@@ -1,14 +1,15 @@
 ---
-- name: "Download apt key"
-  get_url:
-    url: https://repos.influxdata.com/influxdata-archive_compat.key
-    dest: /tmp/influxdata-archive_compat.key
+- name: "Add apt key"
+  block:
+    - name: "Download apt key"
+      ansible.builtin.get_url:
+        url: https://repos.influxdata.com/influxdata-archive_compat.key
+        dest: /tmp/influxdata-archive_compat.key
 
-- name: "Install apt key"
-  shell: cat /tmp/influxdata-archive_compat.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/influxdata-archive_compat.gpg > /dev/null
-
-- name: "Update apt key"
-  shell: echo 'deb [signed-by=/etc/apt/trusted.gpg.d/influxdata-archive_compat.gpg] https://repos.influxdata.com/debian stable main' | sudo tee /etc/apt/sources.list.d/influxdata.list
+    - name: "Install apt key"
+      ansible.builtin.apt_repository:
+        repo: "deb [signed-by=/tmp/influxdata-archive_compat.key] https://repos.influxdata.com/debian stable main"
+        state: present
 
 - name: "Install Telegraf"
   apt:
